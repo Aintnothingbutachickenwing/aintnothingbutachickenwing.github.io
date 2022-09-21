@@ -48,16 +48,29 @@ for(let s = 1; s<100000; s++){
  }
 }
 
-// define player card heart club etc. variables var PCC1 = CardColor(Math.floor(Math.random()*4+1))
+// define player card heart club etc. variables
+var PCC1 = CardColor(Math.floor(Math.random()*4+1))
 var PCC2 = CardColor(Math.floor(Math.random()*4+1))
 var DCC1 = CardColor(Math.floor(Math.random()*4+1))
 var DCC2 = CardColor(Math.floor(Math.random()*4+1))
 
-// define player/dealer card number variables let PC1= Math.floor(Math.random()*13+2) let PC2 = Math.floor(Math.random()*13+2) let DC1 = Math.floor(Math.random()*13+2) let DC2 = Math.floor(Math.random()*13+2)
+// define player/dealer card number variables
+let PC1= Math.floor(Math.random()*13+2)
+let PC2 = Math.floor(Math.random()*13+2)
+let DC1 = Math.floor(Math.random()*13+2)
+let DC2 = Math.floor(Math.random()*13+2)
 
 // show cards on console
 
-// convert cards to 11,12,13 to 10 and 14 to 11 if (PC1>9 && PC1<14){PC1=10} if (PC1===14){PC1=11} if (PC2>9 && PC2<14){PC2=10} if (PC2===14){PC2=11} if (DC1>9 && DC1<14){DC1=10} if (DC1===14){DC1=11} if (DC2>9 && DC2<14){DC2=10} if (DC2===14){DC2=11}
+// convert cards to 11,12,13 to 10 and 14 to 11
+if (PC1>9 && PC1<14){PC1=10}
+if (PC1===14){PC1=11}
+if (PC2>9 && PC2<14){PC2=10}
+if (PC2===14){PC2=11}
+if (DC1>9 && DC1<14){DC1=10}
+if (DC1===14){DC1=11}
+if (DC2>9 && DC2<14){DC2=10}
+if (DC2===14){DC2=11}
 
 
 /*only for test
@@ -75,7 +88,10 @@ if (PS===22){PS=2}
 let DS = DC1 + DC2
 if (DS===22){DS=2}
 
-// First Decision player hit or stand PHS1 0 means stand and 1 means hit let PHS1 = 0 if (PS > 18){PHS1 = 0;} if ((PC1===11||PC2===11)&&PS<18){PHS1=1;}
+// First Decision player hit or stand PHS1 0 means stand and 1 means hit
+let PHS1 = 0
+if (PS > 18){PHS1 = 0;}
+if ((PC1===11||PC2===11)&&PS<18){PHS1=1;}
 if ((PC1===11||PC2===11)&&PS===18&&DC1===2){PHS1=0;}
 if ((PC1===11||PC2===11)&&PS===18&&DC1>8){PHS1=1;}
 if ((PC1===11||PC2===11)&&PS===18&&DC1>2&&DC1<7){PHS1=1;}
@@ -94,7 +110,9 @@ let PFS=0
 if (PHS1===0){PFS=PS}
 
 // Player Hit Card 1 PHC
-let PHC = Math.floor(Math.random()*13+2) if (PHC>9 && PHC<14){PHC=10} if (PHC===14){PHC=11}
+let PHC = Math.floor(Math.random()*13+2)
+if (PHC>9 && PHC<14){PHC=10}
+if (PHC===14){PHC=11}
 
 
 // Player score after Hit Card 1
@@ -103,7 +121,10 @@ PS=PS+PHC
 
 if(PHS1===1){PFS=PS}
 
-// 2nd Decision player hit or stand PHS2 0 means stand and 1 means hit let PHS2 = 0 if (PS > 18){PHS2= 0;} if (PC1===11||PC2===11&&PS<18){PHS2=1;}
+// 2nd Decision player hit or stand PHS2 0 means stand and 1 means hit
+let PHS2 = 0
+if (PS > 18){PHS2= 0;}
+if (PC1===11||PC2===11&&PS<18){PHS2=1;}
 if (PC1===11||PC2===11&&PS===18&&DC1===2){PHS2=0;}
 if (PC1===11||PC2===11&&PS===18&&DC1>8){PHS2=1;}
 if (PC1===11||PC2===11&&PS===18&&DC1>2&&DC1<7){PHS2=1;}
@@ -132,7 +153,10 @@ if(PHS2===1){PFS=PS}
 
 // switch to dealer
 
-// dealer decision 1 hit or stand DHS.  0 is stand and 1 is hit let DHS1=0 if(DS<17){DHS1=1} if(DS>16){DHS1=0}
+// dealer decision 1 hit or stand DHS.  0 is stand and 1 is hit
+let DHS1=0
+if(DS<17){DHS1=1}
+if(DS>16){DHS1=0}
 
 let DFS=0
 if(DHS1===0){DFS=DS}
@@ -148,9 +172,12 @@ DS=DS+DHC
 
 if (DHS1===1){DFS=DS}
 
-// dealer decision 2 hit or stand DHS.  0 is stand and 1 is hit let DHS2=0 if(DHS1===1&&DS<17){DHS2=1} if(DHS1===DS>16){DHS2=0}
+// dealer decision 2 hit or stand DHS.  0 is stand and 1 is hit
+let DHS2=0
+if(DHS1===1&&DS<17){DHS2=1}
+if(DHS1===DS>16){DHS2=0}
 
-// dealer hit card 2
+// dealer hit card 2 
 DHC = Math.floor(Math.random()*13+2)
 if (DHC>9 && DHC<14){DHC=10}
 if (DHC===14){DHC=11}
@@ -165,7 +192,9 @@ if(DHS2===1){DFS=DS}
 // who wins??
 if(PFS>21){dealerwins ++}
 if(PFS<22&&DFS>21){playerwins ++}
-if(PFS<22&&DFS<22&&PFS>DFS){playerwins ++} if(PFS<22&&DFS<22&&DFS>PFS){dealerwins ++} if(PFS<22&&DFS<22&&DFS===PFS){ties ++}
+if(PFS<22&&DFS<22&&PFS>DFS){playerwins ++}
+if(PFS<22&&DFS<22&&DFS>PFS){dealerwins ++}
+if(PFS<22&&DFS<22&&DFS===PFS){ties ++}
 
 
 
@@ -177,15 +206,16 @@ console.log('player:' + playerwins)
 console.log('dealer:' + dealerwins)
 console.log('ties:' + ties)
 
-document.getElementById("dealer").innerHTML = "The dealer will win" + ' '+ dealerwins + " times"
+document.getElementById("dealer").innerHTML =
+"The dealer will win" + ' '+ dealerwins + " times"
 
-document.getElementById("player").innerHTML = "The player will win" + ' '+playerwins + ".";
+document.getElementById("player").innerHTML =
+"The player will win" + ' '+playerwins + ".";
 
-document.getElementById("tie").innerHTML = "The dealer and player will tie" + ' '+ties + ".";
+document.getElementById("tie").innerHTML =
+"The dealer and player will tie" + ' '+ties + ".";
 
 </script>
 
-  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
 </body>
- 
 </html>
